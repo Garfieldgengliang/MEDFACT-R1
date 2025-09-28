@@ -6,15 +6,15 @@
 export DEBUG_MODE="true"
 export LOG_PATH="./vllm_run_0526.txt"
 
-QWEN_PATH="/root/autodl-tmp/Qwen2-5-VL-3B-IUxray-sft"
-MIMIC_DATASET="/root/autodl-tmp/IUxray_grpo_0506"
-OUTPUT_DIR="OUTPUT_DIR_IUxray_sft_fake_label_consistent_reward_0526"
+QWEN_PATH=" "
+MIMIC_DATASET=" "
+OUTPUT_DIR=" "
 RUN_NAME="IUxray_QWEN25_3B_GRPO_20250526"
 
 # NOTE: you are expected to use X + 1 cards for X training proc and 1 vLLM proc 
 # e.g., the visible devices should be 0,1,2,3,4 for 5 cards, and  --nproc_per_node="4"
 
-CUDA_VISIBLE_DEVICES="0,1,2" torchrun --nproc_per_node="3" \
+CUDA_VISIBLE_DEVICES="0,1,2,3" torchrun --nproc_per_node="4" \
     --nnodes="1" \
     --node_rank="0" \
     --master_addr="127.0.0.1" \
