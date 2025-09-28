@@ -133,7 +133,7 @@ def fact_reward(completions, keyword, **kwargs):
                 f.write(f"------------- {current_time} Fact reward: {reward} -------------\n")
                 f.write(f"Content: {content}\n")
                 f.write(f"Keyword: {keys}\n")
-    print('current fact rewards list is ', rewards)
+    # print('current fact rewards list is ', rewards)
     return rewards
 
 def logical_consistency_check(think, answer):
@@ -141,10 +141,9 @@ def logical_consistency_check(think, answer):
     # Implement your logic consistency check here
     # For example, you can use a simple keyword match or a more complex NLP model
     # For now, let's just return True if the think part is in the answer
-    API_SECRET_KEY = 'sk-5ac0871bcbb3476e82a17b6bb0e0691b'
-    BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1'
-    # # MODEL_NAME = 'qwen2.5-7b-instruct-ft-202504020954-b784'
-    MODEL_NAME = 'qwen2.5-72b-instruct'
+    API_SECRET_KEY = ''
+    BASE_URL = ''
+    MODEL_NAME = ''
     prompt_qua = "I will provide you with a reasoning process and a corresponding answer. You need to tell me if the reasoning process can lead to the answer. For example, \
         if the reasoning process said '<think> Pneumothorax is a condition where air accumulates in the pleural space, which is the area between the lungs and the chest wall. \
         On an X-ray, this can appear as a dark or white area in the lung field, depending on the location of the air collection. However, the image provided does not show \
@@ -179,12 +178,12 @@ def consistent_reward(completions, **kwargs):
         result_1 = re.search(pattern_1, content)
         result_2 = re.search(pattern_2, content)
         if result_1 and result_2 :
-            print('matching think and answer pattern')
+            # print('matching think and answer pattern')
             think = '<think>' + result_1.group(1).strip() + '</think>'
             answer = '<answer>' + result_2.group(1).strip() + '</answer>'
             # answer = result_2.group(1).strip()
-            print("think: ", think)
-            print("answer: ", answer)
+            # print("think: ", think)
+            # print("answer: ", answer)
             # Check if the logical part of think process is consistent with the answer
             checker_response = logical_consistency_check(think, answer)
             if 'yes' in checker_response.lower()[:10]:
@@ -193,11 +192,11 @@ def consistent_reward(completions, **kwargs):
                 reward = -0.2
             else:
                 reward = 0.2
-            print('current reward is ', reward)
+            print('current consistent reward is ', reward)
         else:
-            print('No matching think and answer pattern')
-            print('current reward is ', reward)
-            # continue
+            # print('No matching think and answer pattern')
+            # print('current reward is ', reward)
+            continue
         
         # except Exception:
             # pass
@@ -283,7 +282,6 @@ def main(script_args, training_args, model_args):
             ],
         }
 
-    
     print('SCRITP ARGS ', script_args.dataset_train_split)
     print('dataset features', dataset[script_args.dataset_train_split].features)
     print('script_args.dataset_config', script_args.dataset_config)
@@ -300,7 +298,7 @@ def main(script_args, training_args, model_args):
 
     
     trainer_cls = Qwen2VLGRPOTrainer if not training_args.use_vllm else Qwen2VLGRPOVLLMTrainer
-    print("using: ", trainer_cls)
+    print("using: trainer class", trainer_cls)
 
     # Initialize the GRPO trainer
     trainer = trainer_cls(
