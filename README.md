@@ -11,7 +11,7 @@ Dataset will be available soon.
 
 
 ## 🌟 Requirements
-1. Clone this repository and navigate to RULE folder
+1. Clone this repository
 ```bash
 
 ```
@@ -24,9 +24,9 @@ Dataset will be available soon.
 
 3. Download the required model checkpoints [Qwen2.5-VL-3B](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct) from huggingface.
 
-4. For all the medical datasets, you need firstly apply for the right of access and then download the dataset.
+4. For all the training datasets, you can download the dataset by links below.
 
-- [MIMIC-CXR]()
+- [MIMIC-CXR](https://drive.google.com/file/d/1Yd4MVqbC9eegMOWORRjhW-kqgcR2pzoH/view?usp=drive_link)
 - [IU-Xray](https://drive.google.com/file/d/1q9VTk8OW-H2TLlbPCcN-nrY5xVI3iMns/view?usp=sharing) 
 - [Harvard-FairVLMed](https://drive.google.com/file/d/1czgGimDWmfS1cRnNsbgPEzQgA900ia-e/view?usp=sharing)
 
