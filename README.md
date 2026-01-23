@@ -11,16 +11,16 @@ Dataset will be available soon.
 
 
 ## 🌟 Requirements
-1. Clone this repository
-```bash
+1. Clone this repository and cd into the project directory.
 
-```
 
 2. Install Package: Create conda environment
 
 ```Shell
-
+pip install -e ".[dev]"
+pip install -r requirements.txt
 ```
+Note: if you encounter errors when installing flash-attention, please try to install flash-attention from wheel.
 
 3. Download the required model checkpoints [Qwen2.5-VL-3B](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct) from huggingface.
 
